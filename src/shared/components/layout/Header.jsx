@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../constants/app";
 
 function Header() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,13 +18,13 @@ function Header() {
               <Link to="/">
                 <img
                   className="img-fluid"
-                  src="http://localhost:5173/images/logo.png"
+                  src={`${BASE_URL}/images/logo.png`}
                 />
               </Link>
             </h1>
           </div>
           <div id="search" className="col-lg-6 col-md-6 col-sm-12">
-            <form className="form-inline" action="/search">
+            <form className="form-inline">
               <input
                 className="form-control mt-3"
                 type="search"
