@@ -9,53 +9,32 @@ function Sidebar() {
       <div id="banner">
         <div className="banner-item">
           <Link to="#">
-            {/* <Lazyimg src="http://localhost:5173/images/banner-1.png" /> */}
             <img className="img-fluid" src={`${URL}/images/banner-1.png`} />
           </Link>
         </div>
         <div className="banner-item">
           <Link to="#">
-            {/* <Lazyimg src="http://localhost:5173/images/banner-2.png" /> */}
-            <img
-              className="img-fluid"
-              src="http://localhost:5173/images/banner-2.png"
-            />
+            <img className="img-fluid" src={`${URL}/images/banner-2.png`} />
           </Link>
         </div>
         <div className="banner-item">
           <Link to="#">
-            {/* <Lazyimg src="http://localhost:5173/images/banner-3.png" /> */}
-            <img
-              className="img-fluid"
-              src="http://localhost:5173/images/banner-3.png"
-            />
+            <img className="img-fluid" src={`${URL}/images/banner-3.png`} />
           </Link>
         </div>
         <div className="banner-item">
           <Link to="#">
-            {/* <Lazyimg src="http://localhost:5173/images/banner-4.png" /> */}
-            <img
-              className="img-fluid"
-              src="http://localhost:5173/images/banner-4.png"
-            />
+            <img className="img-fluid" src={`${URL}/images/banner-4.png`} />
           </Link>
         </div>
         <div className="banner-item">
           <Link to="#">
-            {/* <Lazyimg src="http://localhost:5173/images/banner-5.png" /> */}
-            <img
-              className="img-fluid"
-              src="http://localhost:5173/images/banner-5.png"
-            />
+            <img className="img-fluid" src={`${URL}/images/banner-5.png`} />
           </Link>
         </div>
         <div className="banner-item">
           <Link to="#">
-            {/* <Lazyimg src="http://localhost:5173/images/banner-6.png" /> */}
-            <img
-              className="img-fluid"
-              src="http://localhost:5173/images/banner-6.png"
-            />
+            <img className="img-fluid" src={`${URL}/images/banner-6.png`} />
           </Link>
         </div>
       </div>
