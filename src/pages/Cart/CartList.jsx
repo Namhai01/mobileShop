@@ -37,7 +37,10 @@ function CartList() {
           cartItems.map((item) => (
             <div className="cart-item row" key={item?._id}>
               <div className="cart-thumb col-lg-7 col-md-7 col-sm-12">
-                <img src={getImageProduct(item?.image)} alt={item?.name} />
+                <img
+                  src={getImageProduct(item?.thumbnail)}
+                  alt={item?.thumbnail}
+                />
                 <h4>{item?.name}</h4>
               </div>
               <div className="cart-quantity col-lg-2 col-md-2 col-sm-12">

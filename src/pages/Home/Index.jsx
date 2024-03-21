@@ -6,20 +6,12 @@ function Home() {
   const [featuredProduct, setFeaturedProduct] = useState([]);
 
   useEffect(() => {
-    getProducts(
-      {},
-      {},
-      {
-        params: { limit: 6 },
-      }
-    ).then((product) => setLastesProducts(product.data.docs));
-    getProducts(
-      {},
-      {},
-      {
-        params: { limit: 6, "filter[is_featured]": true },
-      }
-    ).then((product) => setFeaturedProduct(product.data.docs));
+    getProducts({ params: { limit: 6, page: 1 } }).then((product) =>
+      setLastesProducts(product.Data.products)
+    );
+    getProducts({ params: { limit: 6, page: 1, featured: true } }).then(
+      (product) => setFeaturedProduct(product.Data.products)
+    );
   }, []);
   return (
     <div>

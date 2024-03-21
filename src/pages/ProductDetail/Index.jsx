@@ -7,11 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Pagination from "../../shared/components/layout/Pagination";
 import { getImageProduct } from "../../shared/ultils";
-import {
-  getProductsComment,
-  getProductsDetail,
-  postProductsComment,
-} from "../../services/Api";
+import { getProductsDetail, postProductsComment } from "../../services/Api";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/Reduce/cart";
 import Comment from "./Comment";
@@ -21,14 +17,12 @@ function ProductDetail() {
   const [Product, setProduct] = useState({});
   const [Comments, setComment] = useState([]);
   const [FormData, setFormData] = useState({
-    name: "",
+    full_name: "",
     email: "",
-    content: "",
+    body: "",
   });
   const [current, setCurrent] = useState(1);
-  const [next, setNext] = useState();
-  const [pre, setPre] = useState();
-  const [status, setStatus] = useState();
+  const [pages, setPages] = useState();
   const { id } = useParams();
 
   const handleAddToCart = (e) => {
@@ -52,12 +46,11 @@ function ProductDetail() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await postProductsComment(id, FormData);
-      console.log("Bình luận đã được gửi thành công:", response);
+      await postProductsComment(id, FormData);
       setFormData({
-        name: "",
+        full_name: "",
         email: "",
-        content: "",
+        body: "",
       });
     } catch (error) {
       console.error("Lỗi khi gửi bình luận:", error);
@@ -65,15 +58,10 @@ function ProductDetail() {
   };
 
   useEffect(() => {
-    getProductsDetail(id).then((products) => {
-      setProduct(products.data);
-    });
-    getProductsComment(id, current).then((comment) => {
-      setComment(comment.data.docs);
-      setCurrent(comment.data.pages.currentPage);
-      setPre(comment.data.pages.prev);
-      setNext(comment.data.pages.next);
-      setStatus(comment.data.pages.hasNext);
+    getProductsDetail(id, { params: { page: current } }).then((products) => {
+      setProduct(products?.Data.docs.product);
+      setComment(products?.Data.docs.Comment);
+      setPages(products?.Pages);
     });
   }, [id, current]);
 
@@ -87,7 +75,7 @@ function ProductDetail() {
       <div id="product">
         <div id="product-head" className="row">
           <div id="product-img" className="col-lg-6 col-md-6 col-sm-12">
-            <img src={getImageProduct(Product?.image)} />
+            <img src={getImageProduct(Product?.thumbnail)} />
           </div>
           <div id="product-details" className="col-lg-6 col-md-6 col-sm-12">
             <h1>{Product?.name}</h1>
@@ -112,7 +100,7 @@ function ProductDetail() {
                   : "N/A"}{" "}
                 Đ
               </li>
-              {Product.is_stock ? (
+              {Product?.is_stock ? (
                 <li id="status">Còn hàng</li>
               ) : (
                 <li id="status" className="text-danger">
@@ -130,7 +118,7 @@ function ProductDetail() {
         <div id="product-body" className="row">
           <div className="col-lg-12 col-md-12 col-sm-12">
             <h3>Đánh giá về {Product?.name}</h3>
-            <p>{Product?.details}</p>
+            <p>{Product?.description}</p>
           </div>
         </div>
         {/*	Comment	*/}
@@ -141,11 +129,11 @@ function ProductDetail() {
               <div className="form-group">
                 <label>Tên:</label>
                 <input
-                  name="name"
+                  name="full_name"
                   required
                   type="text"
                   className="form-control"
-                  value={FormData.name}
+                  value={FormData.full_name}
                   onChange={handleChange}
                 />
               </div>
@@ -164,11 +152,11 @@ function ProductDetail() {
               <div className="form-group">
                 <label>Nội dung:</label>
                 <textarea
-                  name="content"
+                  name="body"
                   required
                   rows={8}
                   className="form-control"
-                  value={FormData.content}
+                  value={FormData.body}
                   onChange={handleChange}
                 />
               </div>
@@ -179,13 +167,7 @@ function ProductDetail() {
           </div>
         </div>
         <Comment Comments={Comments} />
-        <Pagination
-          Page={Page}
-          status={status}
-          pre={pre}
-          current={current}
-          next={next}
-        />
+        {Comments.length > 1 ? <Pagination Page={Page} pages={pages} /> : null}
       </div>
     </>
   );

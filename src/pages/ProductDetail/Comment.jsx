@@ -9,11 +9,11 @@ function Comment({ Comments }) {
           <div className="comment-item" key={index._id}>
             <ul>
               <li>
-                <b>{index.name}</b>
+                <b>{index.full_name}</b>
               </li>
               <li>{moment(index.updatedAt).fromNow()}</li>
               <li>
-                <p>{index.content}</p>
+                <p>{index.body}</p>
               </li>
             </ul>
           </div>

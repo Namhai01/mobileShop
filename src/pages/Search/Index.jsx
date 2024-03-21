@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Pagination from "../../shared/components/layout/Pagination";
 import CardProduct from "../../shared/components/CardProduct";
-import { getProducts, getProductsCategory } from "../../services/Api";
+import {
+  findProducts,
+  getProducts,
+  getProductsCategory,
+} from "../../services/Api";
 
 function Search() {
   const searchParams = new URLSearchParams(location.search);
@@ -10,8 +14,7 @@ function Search() {
   const [Search, setSearch] = useState(searchQuery);
   const [products, setProducts] = useState();
   const [current, setCurrent] = useState(1);
-  const [next, setNext] = useState();
-  const [pre, setPre] = useState();
+  const [pages, setPages] = useState();
 
   useEffect(() => {
     if (Search !== null) {
@@ -20,12 +23,12 @@ function Search() {
   }, [Search]);
 
   useEffect(() => {
-    getProducts(Search, current, {}).then((products) => {
-      setProducts(products.data.docs),
-        setCurrent(products?.data.pages.currentPage),
-        setNext(products?.data.pages.next),
-        setPre(products?.data.pages.prev);
-    });
+    findProducts({ params: { key: Search, limit: 15, page: current } }).then(
+      (products) => {
+        setProducts(products.Data.products);
+        setPages(products?.Pages);
+      }
+    );
   }, [current]);
 
   const Page = (number) => {
@@ -35,7 +38,7 @@ function Search() {
   return (
     <>
       <CardProduct title={Search} products={products} searchTitle={true} />
-      <Pagination Page={Page} pre={pre} current={current} next={next} />
+      <Pagination Page={Page} pages={pages} />
     </>
   );
 }

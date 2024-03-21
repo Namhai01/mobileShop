@@ -1,70 +1,31 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Pagination({ pre, current, next, Page, status }) {
+function Pagination({ Page, pages }) {
   const handleClick = (pageNumber) => {
     Page(pageNumber);
   };
-
   return (
     <div id="pagination">
       <ul className="pagination">
         <li className="page-item">
-          <Link className="page-link" to="#" onClick={() => handleClick(pre)}>
+          <Link className="page-link" to="#">
             Trang trước
           </Link>
         </li>
-        {pre !== 0 ? (
-          <>
-            <li className="page-item">
-              <Link
-                className="page-link"
-                to="#"
-                onClick={() => handleClick(pre)}
-              >
-                {pre}
-              </Link>
-            </li>
-            <li className="page-item active">
-              <Link className="page-link" to="#">
-                {current}
-              </Link>
-            </li>
-            {next !== 0 && (
-              <li className="page-item">
-                <Link
-                  className="page-link"
-                  to="#"
-                  onClick={() => handleClick(next)}
-                >
-                  {next}
-                </Link>
-              </li>
-            )}
-          </>
-        ) : (
-          <>
-            <li className="page-item active">
-              <Link className="page-link" to="#">
-                {current}
-              </Link>
-            </li>
-            {next !== 0 && (
-              <li className="page-item">
-                <Link
-                  className="page-link"
-                  to="#"
-                  onClick={() => handleClick(next)}
-                >
-                  {next}
-                </Link>
-              </li>
-            )}
-          </>
-        )}
-
+        {pages?.map((page, index) => (
+          <li className="page-item" key={index}>
+            <Link
+              className="page-link"
+              to="#"
+              onClick={() => handleClick(page)}
+            >
+              {page}
+            </Link>
+          </li>
+        ))}
         <li className="page-item">
-          <Link className="page-link" to="#" onClick={() => handleClick(next)}>
+          <Link className="page-link" to="#">
             Trang sau
           </Link>
         </li>

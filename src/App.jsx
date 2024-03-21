@@ -10,6 +10,7 @@ import Cart from "./pages/Cart/Index";
 import Search from "./pages/Search/Index";
 import Categories from "./pages/Category/Index";
 import Success from "./pages/Success/Index";
+import NotFound from "./pages/NotFound/Index";
 function App() {
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
               <Route path="/Categories/:id" element={<Categories />} />
               <Route path="/Success" element={<Success />} />
               <Route path="/Search" element={<Search />} />
+              <Route path="/*" element={<NotFound />} />
             </Routes>
           </div>
           <Sidebar />
