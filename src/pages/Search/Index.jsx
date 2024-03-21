@@ -10,12 +10,11 @@ import {
 
 function Search() {
   const searchParams = new URLSearchParams(location.search);
-  const searchQuery = searchParams.get("name");
+  const searchQuery = searchParams.get("key");
   const [Search, setSearch] = useState(searchQuery);
   const [products, setProducts] = useState();
   const [current, setCurrent] = useState(1);
   const [pages, setPages] = useState();
-
   useEffect(() => {
     if (Search !== null) {
       setCurrent(1);

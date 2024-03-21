@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { URL } from "../../constants/app";
 
 function Header() {
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
+  };
+  const handleClick = (event) => {
+    event.preventDefault();
+    return navigate(`/search/?key=${searchTerm}`);
   };
   const count = useSelector((state) => state.cart.counter);
   return (
@@ -31,7 +36,11 @@ function Header() {
                 value={searchTerm}
                 onChange={handleSearchChange}
               />
-              <button className="btn btn-danger mt-3" type="submit">
+              <button
+                className="btn btn-danger mt-3"
+                type="submit"
+                onClick={handleClick}
+              >
                 Tìm kiếm
               </button>
             </form>
