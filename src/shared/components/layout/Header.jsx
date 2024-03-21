@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../../constants/app";
+import { URL } from "../../constants/app";
 
 function Header() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,10 +16,7 @@ function Header() {
           <div id="logo" className="col-lg-3 col-md-3 col-sm-12">
             <h1>
               <Link to="/">
-                <img
-                  className="img-fluid"
-                  src={`${BASE_URL}/images/logo.png`}
-                />
+                <img className="img-fluid" src={`${URL}/images/logo.png`} />
               </Link>
             </h1>
           </div>

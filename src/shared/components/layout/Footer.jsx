@@ -1,5 +1,5 @@
 import React from "react";
-import { BASE_URL } from "../../constants/app";
+import { URL } from "../../constants/app";
 
 function Footer() {
   return (
@@ -10,7 +10,7 @@ function Footer() {
             <div id="logo-2" className="col-lg-3 col-md-6 col-sm-12">
               <h2>
                 <a href="#">
-                  <img src={`${BASE_URL}/images/logo-footer.png`} />
+                  <img src={`${URL}/images/logo-footer.png`} />
                 </a>
               </h2>
               <p>

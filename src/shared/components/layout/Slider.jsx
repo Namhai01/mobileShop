@@ -1,4 +1,5 @@
 import React from "react";
+import { URL } from "../../constants/app";
 
 function Slider() {
   return (
@@ -15,40 +16,22 @@ function Slider() {
       {/* The slideshow */}
       <div className="carousel-inner">
         <div className="carousel-item active">
-          <img
-            src="http://localhost:5173/images/slide-1.png"
-            alt="Vietpro Academy"
-          />
+          <img src={`${URL}images/slide-1.png`} alt="Vietpro Academy" />
         </div>
         <div className="carousel-item">
-          <img
-            src="http://localhost:5173/images/slide-2.png"
-            alt="Vietpro Academy"
-          />
+          <img src={`${URL}images/slide-2.png`} alt="Vietpro Academy" />
         </div>
         <div className="carousel-item">
-          <img
-            src="http://localhost:5173/images/slide-3.png"
-            alt="Vietpro Academy"
-          />
+          <img src={`${URL}images/slide-3.png`} alt="Vietpro Academy" />
         </div>
         <div className="carousel-item">
-          <img
-            src="http://localhost:5173/images/slide-4.png"
-            alt="Vietpro Academy"
-          />
+          <img src={`${URL}images/slide-4.png`} alt="Vietpro Academy" />
         </div>
         <div className="carousel-item">
-          <img
-            src="http://localhost:5173/images/slide-5.png"
-            alt="Vietpro Academy"
-          />
+          <img src={`${URL}images/slide-5.png`} alt="Vietpro Academy" />
         </div>
         <div className="carousel-item">
-          <img
-            src="http://localhost:5173/images/slide-6.png"
-            alt="Vietpro Academy"
-          />
+          <img src={`${URL}images/slide-6.png`} alt="Vietpro Academy" />
         </div>
       </div>
       {/* Left and right controls */}
