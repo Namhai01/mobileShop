@@ -9,7 +9,7 @@ function Header() {
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
-  const handleClick = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     return navigate(`/search/?key=${searchTerm}`);
   };
@@ -30,7 +30,7 @@ function Header() {
               <input
                 className="form-control mt-3"
                 type="search"
-                name="name"
+                name="key"
                 placeholder="Tìm kiếm"
                 aria-label="Search"
                 value={searchTerm}
@@ -39,7 +39,7 @@ function Header() {
               <button
                 className="btn btn-danger mt-3"
                 type="submit"
-                onClick={handleClick}
+                onClick={handleSubmit}
               >
                 Tìm kiếm
               </button>

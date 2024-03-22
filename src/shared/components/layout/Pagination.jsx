@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Pagination({ Page, pages }) {
+function Pagination({ Page, pages, current }) {
   const handleClick = (pageNumber) => {
     Page(pageNumber);
   };
@@ -9,25 +9,33 @@ function Pagination({ Page, pages }) {
     <div id="pagination">
       <ul className="pagination">
         <li className="page-item">
-          <Link className="page-link" to="#">
+          <button
+            className="page-link"
+            to="#"
+            onClick={() => handleClick(Math.max(1, current - 1))}
+          >
             Trang trước
-          </Link>
+          </button>
         </li>
         {pages?.map((page, index) => (
           <li className="page-item" key={index}>
-            <Link
+            <button
               className="page-link"
               to="#"
               onClick={() => handleClick(page)}
             >
               {page}
-            </Link>
+            </button>
           </li>
         ))}
         <li className="page-item">
-          <Link className="page-link" to="#">
+          <button
+            className="page-link"
+            to="#"
+            onClick={() => handleClick(Math.min(current + 1, pages.length))}
+          >
             Trang sau
-          </Link>
+          </button>
         </li>
       </ul>
     </div>

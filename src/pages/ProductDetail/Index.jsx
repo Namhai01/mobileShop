@@ -167,7 +167,9 @@ function ProductDetail() {
           </div>
         </div>
         <Comment Comments={Comments} />
-        {Comments.length > 1 ? <Pagination Page={Page} pages={pages} /> : null}
+        {Comments.length > 1 ? (
+          <Pagination Page={Page} pages={pages} current={current} />
+        ) : null}
       </div>
     </>
   );

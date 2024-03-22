@@ -43,7 +43,7 @@ function Categories() {
         title={`${title} (hiện có ${item} sản phẩm) `}
         products={products}
       />
-      {item ? <Pagination Page={Page} pages={pages} /> : null}
+      {item ? <Pagination Page={Page} pages={pages} current={current} /> : null}
     </div>
   );
 }
