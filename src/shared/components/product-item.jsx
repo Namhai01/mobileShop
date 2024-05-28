@@ -5,7 +5,7 @@ const ProductItem = ({ item }) => {
   return (
     <div className="product-item card text-center">
       <Link to={`/Product/${item?._id}`}>
-        <img src={getImageProduct(item?.image)} />
+        <img src={getImageProduct(item?.thumbnail)} />
       </Link>
       <h4>
         <Link to={`/Product/${item?._id}`}>{item?.name}</Link>
