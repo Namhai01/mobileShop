@@ -13,7 +13,7 @@ function Comment({ Comments }) {
               </li>
               <li>{moment(index.updatedAt).fromNow()}</li>
               <li>
-                <p>{index.body}</p>
+                <p>{index.content}</p>
               </li>
             </ul>
           </div>

@@ -17,10 +17,18 @@ const cartSlice = createSlice({
       );
       if (existingItemIndex !== -1) {
         state.product[existingItemIndex].quantity++;
+        state.price = state.product.reduce(
+          (acc, curr) => acc + Number(curr.price * curr.quantity),
+          0
+        );
       } else {
         newItem.quantity = 1;
         state.product.push(newItem);
         state.counter++;
+        state.price = state.product.reduce(
+          (acc, curr) => acc + Number(curr.price * curr.quantity),
+          0
+        );
       }
     },
     removeItem(state, action) {

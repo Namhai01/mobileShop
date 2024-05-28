@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getImageProduct } from "../../shared/ultils";
 import { Link } from "react-router-dom";
 import { removeItem, sumPrice, updateQuantity } from "../../redux/Reduce/cart";
+import { Bill } from "../../services/Api";
 
 function CartList() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.product);
   const cartPrice = useSelector((state) => state.cart.price);
-  console.log(cartItems);
   const handleRemoveToCart = (e, id) => {
     e.preventDefault();
     dispatch(removeItem(id));
@@ -20,6 +20,23 @@ function CartList() {
     e.preventDefault();
     dispatch(sumPrice());
   };
+
+  ///TEST
+  // let productInfoArray = [];
+  // cartItems.forEach((product) => {
+  //   const { name, quantity } = product;
+  //   productInfoArray.push({ name, quantity });
+  // });
+  // useEffect(() => {
+  //   Bill({
+  //     name: "ok",
+  //     phone: 123456,
+  //     email: "dgn3072000@gmail.com",
+  //     address: "nhà A phố B",
+  //     products: productInfoArray,
+  //     totalPrice: Number(cartPrice),
+  //   });
+  // }, [productInfoArray]);
 
   return (
     <div id="my-cart">

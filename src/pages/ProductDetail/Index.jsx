@@ -118,7 +118,7 @@ function ProductDetail() {
         <div id="product-body" className="row">
           <div className="col-lg-12 col-md-12 col-sm-12">
             <h3>Đánh giá về {Product?.name}</h3>
-            <p>{Product?.description}</p>
+            <p>{Product?.details}</p>
           </div>
         </div>
         {/*	Comment	*/}
@@ -152,7 +152,7 @@ function ProductDetail() {
               <div className="form-group">
                 <label>Nội dung:</label>
                 <textarea
-                  name="body"
+                  name="content"
                   required
                   rows={8}
                   className="form-control"

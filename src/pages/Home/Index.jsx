@@ -9,7 +9,7 @@ function Home() {
     getProducts({ params: { limit: 6, page: 1 } }).then((product) =>
       setLastesProducts(product.Data.products)
     );
-    getProducts({ params: { limit: 6, page: 1, featured: true } }).then(
+    getProducts({ params: { limit: 6, page: 1, is_featured: true } }).then(
       (product) => setFeaturedProduct(product.Data.products)
     );
   }, []);

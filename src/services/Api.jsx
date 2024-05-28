@@ -13,3 +13,5 @@ export const getProductsCategory = (id, config) =>
 export const getCategory = (id, config) =>
   Http.get(`/categories/${id}`, config);
 export const getCategories = (config) => Http.get("/categories", config);
+//auth
+export const Bill = (config) => Http.post(`/auth/bill`, config);
