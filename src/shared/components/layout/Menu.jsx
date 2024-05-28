@@ -18,7 +18,7 @@ function Menu() {
             <ul>
               {Categories?.map((index) => (
                 <li key={index._id} className="menu-item">
-                  <Link to={`/Categories/${index._id}`}>{index.name}</Link>
+                  <Link to={`/Categories/${index._id}`}>{index.title}</Link>
                 </li>
               ))}
             </ul>
